@@ -89,9 +89,20 @@ public class LoginPanel extends JPanel implements ActionListener {
                         {
                             passWord = (sCurrentLine);
                         }
-                 
+                    }
+                    
+                    if((usernameInsert.getText().equals(userName)) && (passwordInsert.getText().equals(passWord)))
+                    {
+                        success.setVisible(true);
+                    }
+                    
+                    else
+                    {
+                        failure.setVisible(true);
                     }
                 } 
+                
+               
                 
                 catch (IOException ee) 
                 {
@@ -109,7 +120,7 @@ public class LoginPanel extends JPanel implements ActionListener {
 			}
 		}
                 
-                System.out.println(userName + "\n" + passWord);
+                System.out.println(userName + passWord + "\n" + usernameInsert.getText() + passwordInsert.getText());
 
 	}
     

@@ -8,16 +8,9 @@ package lab2;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import static java.lang.System.out;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.*;
 import javax.swing.*;
 
 /**
@@ -30,6 +23,9 @@ public class LoginPanel extends JPanel implements ActionListener {
     public JButton submit;
     public JLabel username, password, success, failure;
     public JTextField usernameInsert, passwordInsert;
+    
+    String userName, passWord;
+    int counter = 0;
     
     public LoginPanel(JFrame frame) {
         this.frame = frame;
@@ -71,19 +67,50 @@ public class LoginPanel extends JPanel implements ActionListener {
         
     }
     
-    public void actionPerformed(ActionEvent e) {
-        Object obj = e.getSource();
-        
-        if(obj == submit) {
-        try (PrintWriter out = new PrintWriter(new FileWriter("output.txt", true))) {
+    public void actionPerformed(ActionEvent e) 
+    {
+        BufferedReader br = null;
 
-            out.print(usernameInsert.getText() + " : " + passwordInsert.getText() + "\n");
-        }   catch (FileNotFoundException ex) {
-                Logger.getLogger(LoginPanel.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                Logger.getLogger(LoginPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
+		try 
+                {
+                    String sCurrentLine;
+                    br = new BufferedReader(new FileReader("output.txt"));
+
+                    while ((sCurrentLine = br.readLine()) != null) 
+                    {
+                        
+                        if(counter == 0)
+                        {
+                            userName = (sCurrentLine);
+                            counter ++;
+                        }
+                        
+                        else
+                        {
+                            passWord = (sCurrentLine);
+                        }
+                 
+                    }
+                } 
+                
+                catch (IOException ee) 
+                {
+                    ee.printStackTrace();
+		} 
+                    finally 
+                    {
+			try 
+                        {
+                            if (br != null)br.close();
+			} 
+                        catch (IOException ex) 
+                        {
+                            ex.printStackTrace();
+			}
+		}
+                
+                System.out.println(userName + "\n" + passWord);
+
+	}
     
 }

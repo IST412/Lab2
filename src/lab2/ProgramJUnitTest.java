@@ -10,5 +10,36 @@ package lab2;
  * @author Mazayan
  */
 public class ProgramJUnitTest {
+  
+  
+    public void testNullUsername() {
+      
+    }
+    public void testNullPassword() {
+        
+    }
     
+    public void testUsernameMatch() {
+        
+    }
+    
+    public void testPasswordMatch() {
+        
+    }
+    
+    public void testUsernameCharacterLength() {
+        
+    }
+    
+    public void testPasswordCharacterLength() {
+        
+    }
+    
+    public void testLoginSuccessful() {
+        
+    }
+  
+  
+  
+  
 }

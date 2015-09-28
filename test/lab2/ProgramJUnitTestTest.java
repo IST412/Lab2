@@ -62,7 +62,7 @@ public class ProgramJUnitTestTest
         int result1 = program.subract(numbers[0], numbers[1]);
         int result2 = program.subract(numbers[2], numbers[3]);
         System.out.println(result1 + " " + result2);
-        boolean resultsAreEqual = result1.equals(result2);
+        boolean resultsAreEqual = result1 == result2;
         System.out.println("Test4: resultsAreEqual = " + resultsAreEqual);
         assertTrue(resultsAreEqual);
     }

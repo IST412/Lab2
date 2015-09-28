@@ -1,155 +1,84 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package lab2;
-
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Mazayan
- */
-public class ProgramJUnitTestTest  {
-    
-        public String usernameTest = "";
-        public String passwordTest = "";
-    
-    public ProgramJUnitTestTest()  throws FileNotFoundException {
-    }
+public class ProgramJUnitTestTest
+{
+    int [] numbers = new int [4];
     
     @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
+    public static void setupTests()
+    {
+        System.out.println("Starting Tests");
     }
     
     @Before
-    public void setUp() {
-        LoginFrame frame = new LoginFrame();
-        LoginPanel instance = new LoginPanel(frame);
-        instance.fileReader("input.txt");
-        instance.fileReader("output.txt");
-        
+    public void setupTest()
+    {
+        this.numbers[0] = 5;
+        this.numbers[1] = 10;
+        this.numbers[2] = 15;
+        this.numbers[3] = 20;
+    }
+    
+    @Test
+    public void testAddition()
+    {
+        Program program = new Program();
+        this.setupTest();
+        int result = program.addition(numbers[0], numbers[1]);
+        System.out.println("Test1: result = " + result);
+        assertEquals(15, result);
+    }
+    
+    @Test
+    public void testMultiply()
+    {
+        Program program = new Program();
+        this.setupTest();
+        int result = program.multiply(numbers[2], numbers[3]);
+        System.out.println("Test2: result = " + result);
+        assertEquals(300, result);
+    }
+    
+    @Test
+    public void testDivision()
+    {
+        Program program = new Program();
+        this.setupTest();
+        int result1 = program.division(numbers[0], numbers[1]);
+        int result2 = program.division(numbers[1], numbers[3]);
+        System.out.println(result1 + " " + result2);
+        boolean resultsAreEqual = result1 == result2;
+        System.out.println("Test3: resultsAreEqual = " + resultsAreEqual);
+        assertTrue(resultsAreEqual);
+    }
+    
+    
+    @Test
+    public void testSubtraction()
+    {
+        Program program = new Program();
+        this.setupTest();
+        int result1 = program.subract(numbers[0], numbers[1]);
+        int result2 = program.subract(numbers[2], numbers[3]);
+        System.out.println(result1 + " " + result2);
+        boolean resultsAreEqual = result1.equals(result2);
+        System.out.println("Test4: resultsAreEqual = " + resultsAreEqual);
+        assertTrue(resultsAreEqual);
     }
     
     @After
-    public void tearDown() {
+    public void teardownTest()
+    {
+        this.numbers = null;
+        System.out.println("Test Finished");
     }
-
-    /**
-     * Test of testNullUsername method, of class ProgramJUnitTest.
-     */
-    @Test
-    public void testTestNullUsername() {
-        this.setUp();
-        System.out.println("testNullUsername");
-        LoginFrame frame = new LoginFrame();
-        LoginPanel instance = new LoginPanel(frame);
-        if (instance.userName == null) {
-            System.out.println("Null password");
-        } else {
-            System.out.println("Password exists");
-        }
-    }
-
-    /**
-     * Test of testNullPassword method, of class ProgramJUnitTest.
-     */
-    @Test
-    public void testTestNullPassword() {
-        this.setUp();
-        System.out.println("testNullPassword");
-        LoginFrame frame = new LoginFrame();
-        LoginPanel instance = new LoginPanel(frame);
-        if (instance.passWord == null) {
-            System.out.println("Null password");
-        } else {
-            System.out.println("Password exists");
-        }
-    }
-
-    /**
-     * Test of testUsernameMatch method, of class ProgramJUnitTest.
-     */
-    @Test
-    public void testTestUsernameMatch() {
-        this.setUp();
-        System.out.println("testUsernameMatch");
-        LoginFrame frame = new LoginFrame();
-        LoginPanel instance = new LoginPanel(frame);
-        assertEquals(instance.userName, usernameTest);
-    }
-
-    /**
-     * Test of testPasswordMatch method, of class ProgramJUnitTest.
-     */
-    @Test
-    public void testTestPasswordMatch() {
-        this.setUp();
-        System.out.println("testPasswordMatch");
-        LoginFrame frame = new LoginFrame();
-        LoginPanel instance = new LoginPanel(frame);
-        assertEquals(instance.passWord, passwordTest);
-    }
-
-    /**
-     * Test of testUsernameCharacterLength method, of class ProgramJUnitTest.
-     */
-    @Test
-    public void testTestUsernameCharacterLength() {
-        this.setUp();
-        System.out.println("testUsernameCharacterLength");      
-        LoginFrame frame = new LoginFrame();
-        LoginPanel instance = new LoginPanel(frame);
-        if (instance.userName.length() > 2) {
-            System.out.println("Username is long enough");
-        } else {
-            System.out.println("Username is not long enough");
-        }
-    }
-
-    /**
-     * Test of testPasswordCharacterLength method, of class ProgramJUnitTest.
-     */
-    @Test
-    public void testTestPasswordCharacterLength() {
-        this.setUp();
-        System.out.println("testPasswordCharacterLength");
-        LoginFrame frame = new LoginFrame();
-        LoginPanel instance = new LoginPanel(frame);
-        if (instance.passWord.length() > 2) {
-            System.out.println("Password is long enough");
-        } else {
-            System.out.println("Password is not long enough");
-        }
-    }
-
-    /**
-     * Test of testLoginSuccessful method, of class ProgramJUnitTest.
-     */
-    @Test
-    public void testTestLoginSuccessful() {
-        this.setUp();
-        System.out.println("testLoginSuccessful");
-        LoginFrame frame = new LoginFrame();
-        LoginPanel instance = new LoginPanel(frame);
-        if (instance.success.isVisible()) {
-            System.out.println("Login Success");
-        } else {
-            System.out.println("Login failed");
-        }
+    
+    @AfterClass
+    public static void teardownTests()
+    {
+        System.out.println("All Tests Finished");
     }
     
 }
+

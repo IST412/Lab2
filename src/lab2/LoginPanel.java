@@ -9,8 +9,6 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import static java.lang.System.out;
-import java.util.*;
 import javax.swing.*;
 
 /**
@@ -23,14 +21,13 @@ public class LoginPanel extends JPanel implements ActionListener {
     public JButton submit;
     public JLabel username, password, success, failure;
     public JTextField usernameInsert, passwordInsert;
-    
     String userName, passWord;
     int counter = 0;
     
-    public LoginPanel(JFrame frame) {
+    public LoginPanel(JFrame frame) 
+    {
         this.frame = frame;
         setLayout(null);
-       
         
         submit = new JButton("Submit");
         submit.setBounds(200, 300, 100, 50);
@@ -120,8 +117,6 @@ public class LoginPanel extends JPanel implements ActionListener {
 			}
 		}
                 
-                System.out.println(userName + passWord + "\n" + usernameInsert.getText() + passwordInsert.getText());
-
 	}
     
 }

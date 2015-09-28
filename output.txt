@@ -1,4 +1,2 @@
-cat : dog
-here : there
-near : far
-test : fail
+cat
+dog

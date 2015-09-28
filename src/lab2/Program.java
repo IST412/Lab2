@@ -2,8 +2,8 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package lab2;
 
+package lab2;
 /**
  *
  * @author Cody
@@ -15,7 +15,7 @@ public class Program {
         return result;
     }
     
-    public int substraction(int numberOne, int numberTwo){
+    public int subtraction(int numberOne, int numberTwo){
         int result = numberOne - numberTwo;
         return result;
     }

@@ -1,10 +1,11 @@
+package lab2;
+
 import org.junit.*;
 import static org.junit.Assert.*;
 
 public class ProgramJUnitTestTest
 {
     int [] numbers = new int [4];
-    
     @BeforeClass
     public static void setupTests()
     {
@@ -59,8 +60,8 @@ public class ProgramJUnitTestTest
     {
         Program program = new Program();
         this.setupTest();
-        int result1 = program.subract(numbers[0], numbers[1]);
-        int result2 = program.subract(numbers[2], numbers[3]);
+        int result1 = program.subtraction(numbers[0], numbers[1]);
+        int result2 = program.subtraction(numbers[2], numbers[3]);
         System.out.println(result1 + " " + result2);
         boolean resultsAreEqual = result1 == result2;
         System.out.println("Test4: resultsAreEqual = " + resultsAreEqual);

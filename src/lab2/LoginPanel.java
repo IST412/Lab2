@@ -9,6 +9,8 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -21,7 +23,8 @@ public class LoginPanel extends JPanel implements ActionListener {
     public JButton submit;
     public JLabel username, password, success, failure;
     public JTextField usernameInsert, passwordInsert;
-    String userName, passWord;
+    public String userName = "";
+    public String passWord = "";
     int counter = 0;
     
     public LoginPanel(JFrame frame) 
@@ -64,14 +67,20 @@ public class LoginPanel extends JPanel implements ActionListener {
         
     }
     
-    public void actionPerformed(ActionEvent e) 
-    {
+    public void fileWriter() throws IOException {
+        PrintWriter out = new PrintWriter(new FileWriter ("output.txt", true));
+        out.print(usernameInsert.getText() + "\n");
+        out.print(passwordInsert.getText() + "\n");
+        out.close();
+    }
+    
+    public void fileReader(String file) {
         BufferedReader br = null;
 
 		try 
                 {
                     String sCurrentLine;
-                    br = new BufferedReader(new FileReader("output.txt"));
+                    br = new BufferedReader(new FileReader(file));
 
                     while ((sCurrentLine = br.readLine()) != null) 
                     {
@@ -116,7 +125,16 @@ public class LoginPanel extends JPanel implements ActionListener {
                             ex.printStackTrace();
 			}
 		}
-                
+    }
+    
+    public void actionPerformed(ActionEvent e) 
+    {
+        fileReader("input.txt");
+        try {        
+            fileWriter();
+        } catch (IOException ex) {
+            Logger.getLogger(LoginPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
 	}
     
 }

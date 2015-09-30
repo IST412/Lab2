@@ -29,4 +29,14 @@ public class Program {
         int result = numberOne / numberTwo;
         return result;
     }
+    
+    public int modulus(int numberOne, int numberTwo){
+        int result = numberOne % numberTwo;
+        return result;
+    }
+    
+    public int exponent(int numberOne, int numberTwo){
+        int result = (int) Math.pow(numberOne, numberTwo);
+        return result;
+    }
 }

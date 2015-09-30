@@ -68,6 +68,32 @@ public class ProgramJUnitTestTest
         assertTrue(resultsAreEqual);
     }
     
+    @Test
+    public void testModulus()
+    {
+        Program program = new Program();
+        this.setupTest();
+        int result1 = program.modulus(numbers[0], numbers[1]);
+        int result2 = program.modulus(numbers[1], numbers[3]);
+        System.out.println(result1 + " " + result2);
+        boolean resultsAreEqual = result1 == result2;
+        System.out.println("Test3: resultsAreEqual = " + resultsAreEqual);
+        assertFalse(resultsAreEqual);
+    }
+    
+    @Test
+    public void testExponent()
+    {
+        Program program = new Program();
+        this.setupTest();
+        int result1 = program.exponent(numbers[0], numbers[1]);
+        int result2 = program.exponent(numbers[1], numbers[3]);
+        System.out.println(result1 + " " + result2);
+        boolean resultsAreEqual = result1 == result2;
+        System.out.println("Test3: resultsAreEqual = " + resultsAreEqual);
+        assertFalse(resultsAreEqual);
+    }
+    
     @After
     public void teardownTest()
     {
